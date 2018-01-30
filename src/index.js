@@ -1,6 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 import './index.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  IndexRoute,
+  hashHistory,
+} from 'react-router-dom'
+
 
 function Button(props){
 
@@ -21,7 +29,7 @@ const Result = (props) => {
     );
 };
 
-class App extends React.Component {
+class Layout extends React.Component {
     constructor(props){
         super(props);
         this.state={
@@ -49,13 +57,13 @@ class App extends React.Component {
     }
 }
 
-
-// ========================================
-
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+  <Router>
+    <Route path="/" component={Layout}>
+    </Route>
+  </Router>,
+document.getElementById('root'));
+// ========================================
 
 function findNewFact(dinoFacts){
     return dinoFacts[Math.floor(Math.random()*dinoFacts.length)];
