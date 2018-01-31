@@ -13,7 +13,7 @@ import {
 function Button(props){
 
     return (
-        <button className="randomFactButton" onClick={props.onClick}>
+        <button className="randomFactButton btn btn-primary button" onClick={props.onClick}>
         {props.btnText}
         </button>
     );
