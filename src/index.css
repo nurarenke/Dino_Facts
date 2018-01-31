@@ -14,3 +14,29 @@ body {
     font-family: 'Indie Flower', cursive;
     letter-spacing: 3px;
 }
+
+#dino {
+    margin:5px;
+}
+
+h1, h2 {
+    font-weight: 700;
+    font-family: 'Indie Flower', cursive;
+}
+
+.blue-text {
+    color:#2C3E50;
+}
+
+.decorative-line {
+    max-width: 15rem;
+    color:#fff;
+    height: 1px;
+    border: 1 none;
+}
+
+.fact-section {
+    float:none;
+    margin: 0 auto;
+    border: 5px solid #2C3E50;
+}
