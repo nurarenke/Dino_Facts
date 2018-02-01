@@ -36,7 +36,18 @@ h1, h2 {
 }
 
 .fact-section {
-    float:none;
-    margin: 0 auto;
     border: 5px solid #2C3E50;
+    padding: 10px;
+}
+
+.randomFactButton {
+    font-size: 22px;
+}
+
+.dinotext {
+    margin-top:15px;
+    margin-bottom:25px;
+    font-size: 22px;
+    color:#2C3E50;;
+
 }

@@ -25,7 +25,7 @@ const dinoFacts = ["Dinosaurs are a group of reptiles that have lived on Earth f
 
 const Result = (props) => {
     return (
-        <div>{props.dinoFact}</div>
+        <div className="dinotext">{props.dinoFact}</div>
     );
 };
 
