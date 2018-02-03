@@ -15,7 +15,6 @@ const dinoFacts = ["Dinosaurs are a group of reptiles that have lived on Earth f
 "At present over 700 different species of dinosaurs have been identified and named."]
 
 const Result = (props) => {
-    console.log(props.match)
     return (
         <div className="dinotext">{props.dinoFact}</div>
     );
@@ -27,22 +26,22 @@ export default class Home extends React.Component {
         super(props);
         this.state={
             btnText: "Learn a New Fact",
-            currentDinoFact: "Let's learn about dinos!",
+            currentDinoFact: this.props.match.params.id ? dinoFacts[this.props.match.params.id] : "Let's learn about dinos",
         }
     }
 
     onNewFactClicked = () => {
-        let currentDinoFact = findNewFact(dinoFacts)
+        let newDinoFact = findNewFact(dinoFacts)
 
         this.setState((prevState) => ({
-            dinoFact: currentDinoFact
+            currentDinoFact: newDinoFact
         }));
     };
 
     render() {
         return(
             <div>
-                <Result dinoFact={this.state.dinoFact} match={this.props.match.params.id}/>
+                <Result dinoFact={this.state.currentDinoFact} />
                 <Button onClick={this.onNewFactClicked} btnText={this.state.btnText} />
             </div>
         );
