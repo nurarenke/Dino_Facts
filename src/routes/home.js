@@ -1,12 +1,16 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 
 function Button(props){
-
     return (
-        <button className="randomFactButton btn btn-primary button" onClick={props.onClick}>
-        {props.btnText}
-        </button>
+        <Link to={{ pathname:'/home/' + props.factIndex}}>
+            <button 
+                className="randomFactButton btn btn-primary button" 
+                onClick={props.onClick}>
+                {props.btnText}
+            </button>
+        </Link>
     );
     
 } 
@@ -27,14 +31,15 @@ export default class Home extends React.Component {
         this.state={
             btnText: "Learn a New Fact",
             currentDinoFact: this.props.match.params.id ? dinoFacts[this.props.match.params.id] : "Let's learn about dinos",
+            factIndex: null,
         }
     }
 
     onNewFactClicked = () => {
-        let newDinoFact = findNewFact(dinoFacts)
-
+        let newDinoFactIndex = findNewFactIndex(dinoFacts)
         this.setState((prevState) => ({
-            currentDinoFact: newDinoFact
+            currentDinoFact: dinoFacts[newDinoFactIndex],
+            factIndex: newDinoFactIndex
         }));
     };
 
@@ -42,13 +47,13 @@ export default class Home extends React.Component {
         return(
             <div>
                 <Result dinoFact={this.state.currentDinoFact} />
-                <Button onClick={this.onNewFactClicked} btnText={this.state.btnText} />
+                <Button onClick={this.onNewFactClicked} btnText={this.state.btnText} factIndex={this.state.factIndex} />
             </div>
         );
     }
 }
 // ========================================
 
-function findNewFact(dinoFacts){
-      return dinoFacts[Math.floor(Math.random()*dinoFacts.length)]
+function findNewFactIndex(dinoFacts){
+      return Math.floor(Math.random()*dinoFacts.length)
 }
