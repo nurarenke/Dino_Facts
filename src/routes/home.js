@@ -1,8 +1,6 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 
-const showLocation = withRouter(Button);
-
 function Button(props){
     return (
         <button 
@@ -14,7 +12,8 @@ function Button(props){
 }
 
 const dinoFacts = ["Dinosaurs are a group of reptiles that have lived on Earth for about 245 million years.",
-"At present over 700 different species of dinosaurs have been identified and named."]
+"At present over 700 different species of dinosaurs have been identified and named.", 
+"The word dinosaur comes from the Greek language and means ‘terrible lizard’. The word was coined by English paleontologist Richard Owen in 1842 and was meant to refer to Dinosaurs impressive size rather than their scary appearance."]
 
 const Result = (props) => {
     return (
@@ -29,7 +28,6 @@ export default class Home extends React.Component {
         this.state={
             btnText: "Learn a New Fact",
             currentDinoFact: this.props.match.params.id ? dinoFacts[this.props.match.params.id] : "Let's learn about dinos",
-            factIndex: null,
         }
     }
 
@@ -37,11 +35,10 @@ export default class Home extends React.Component {
         let newDinoFactIndex = findNewFactIndex(dinoFacts)
 
         this.setState((prevState) => ({
-            currentDinoFact: dinoFacts[newDinoFactIndex],
-            factIndex: newDinoFactIndex
+            currentDinoFact: dinoFacts[newDinoFactIndex]
         }));
 
-        this.props.history.push('/home/' + this.state.factIndex)
+        this.props.history.push('/fact/' + newDinoFactIndex);
 
     };
 
