@@ -1,6 +1,6 @@
 import React from 'react';
-import {Link, withRouter} from 'react-router-dom';
 
+/* Button component that displays a button and calls the onclick function */
 function Button(props){
     return (
         <button 
@@ -15,13 +15,14 @@ const dinoFacts = ["Dinosaurs are a group of reptiles that have lived on Earth f
 "At present over 700 different species of dinosaurs have been identified and named.", 
 "The word dinosaur comes from the Greek language and means ‘terrible lizard’. The word was coined by English paleontologist Richard Owen in 1842 and was meant to refer to Dinosaurs impressive size rather than their scary appearance."]
 
+/* Result component displays the dino fact */
 const Result = (props) => {
     return (
         <div className="dinotext">{props.dinoFact}</div>
     );
 };
 
-
+/* Home copoment which renders Result and Button */
 export default class Home extends React.Component {
     constructor(props){
         super(props);
