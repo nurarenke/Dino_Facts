@@ -1,4 +1,5 @@
 import React from 'react';
+import dinoFacts from './dinofacts'
 
 /* Button component that displays a button and calls the onclick function */
 function Button(props){
@@ -11,9 +12,6 @@ function Button(props){
     );
 }
 
-const dinoFacts = ["Dinosaurs are a group of reptiles that have lived on Earth for about 245 million years.",
-"At present over 700 different species of dinosaurs have been identified and named.", 
-"The word dinosaur comes from the Greek language and means ‘terrible lizard’. The word was coined by English paleontologist Richard Owen in 1842 and was meant to refer to Dinosaurs impressive size rather than their scary appearance."]
 
 /* Result component displays the dino fact */
 const Result = (props) => {
@@ -28,6 +26,7 @@ export default class Home extends React.Component {
         super(props);
         this.state={
             btnText: "Learn a New Fact",
+            /* If you type in a fact id in the URL it will display otherwise it will display the text */
             currentDinoFact: this.props.match.params.id ? dinoFacts[this.props.match.params.id] : "Let's learn about dinos",
         }
     }
@@ -52,8 +51,14 @@ export default class Home extends React.Component {
         );
     }
 }
+// Helper Functions
 // ========================================
 
+/* Random number generated for the dino facts array */
 function findNewFactIndex(dinoFacts){
-      return Math.floor(Math.random()*dinoFacts.length)
+    let result = Math.floor(Math.random()*dinoFacts.length)
+        if (result === 0) {
+            return 1
+        };
+    return result
 }
