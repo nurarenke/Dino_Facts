@@ -1,5 +1,6 @@
 import React from 'react';
 import dinoFacts from './dinofacts'
+import NotFound from './notfound'
 
 /* Button component that displays a button and calls the onclick function */
 function Button(props){
@@ -27,14 +28,8 @@ export default class Home extends React.Component {
         this.state={
             btnText: "Learn a New Fact",
             /* If you type in a fact id in the URL it will display otherwise it will display the text */
-            currentDinoFact: this.props.match.params.id < dinoFacts.length ? dinoFacts[this.props.match.params.id] : "404",
+            currentDinoFact: this.props.match.params.id ? dinoFacts[this.props.match.params.id] : "Let's learn about dinos",
         }
-    };
-    //TODO - check if params are correct or load not found
-    componentWillMount(){
-        if (window.location.href === "/") {
-            this.setState({currentDinoFact:"Let's Learn about dinos"});
-        };
     };
 
     onNewFactClicked = () => {
@@ -49,6 +44,13 @@ export default class Home extends React.Component {
     };
 
     render() {
+        if (this.props.match.params.id && this.props.match.params.id > dinoFacts.length) {
+            return(
+                <div>
+                <NotFound />
+                </div>
+            );
+        };
         return(
             <div>
                 <Result dinoFact={this.state.currentDinoFact} />
