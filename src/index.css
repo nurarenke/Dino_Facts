@@ -19,9 +19,13 @@ body {
     margin:5px;
 }
 
-h1, h2 {
+h1, h2{
     font-weight: 700;
     font-family: 'Indie Flower', cursive;
+}
+
+h3{
+    font-family: Arial
 }
 
 .blue-text {

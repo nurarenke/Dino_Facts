@@ -27,9 +27,15 @@ export default class Home extends React.Component {
         this.state={
             btnText: "Learn a New Fact",
             /* If you type in a fact id in the URL it will display otherwise it will display the text */
-            currentDinoFact: this.props.match.params.id ? dinoFacts[this.props.match.params.id] : "Let's learn about dinos",
+            currentDinoFact: this.props.match.params.id < dinoFacts.length ? dinoFacts[this.props.match.params.id] : "404",
         }
-    }
+    };
+
+    componentWillMount(){
+        if (window.location.href === "/") {
+            this.setState({currentDinoFact:"Let's Learn about dinos"});
+        };
+    };
 
     onNewFactClicked = () => {
         let newDinoFactIndex = findNewFactIndex(dinoFacts)
