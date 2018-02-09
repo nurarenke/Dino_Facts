@@ -30,7 +30,7 @@ export default class Home extends React.Component {
             currentDinoFact: this.props.match.params.id < dinoFacts.length ? dinoFacts[this.props.match.params.id] : "404",
         }
     };
-
+    //TODO - check if params are correct or load not found
     componentWillMount(){
         if (window.location.href === "/") {
             this.setState({currentDinoFact:"Let's Learn about dinos"});
